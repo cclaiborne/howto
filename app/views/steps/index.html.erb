@@ -16,9 +16,9 @@
       <tr>
         <td><%= step.title %></td>
         <td><%= step.body %></td>
-        <td><%= link_to 'Show', step %></td>
-        <td><%= link_to 'Edit', edit_step_path(step) %></td>
-        <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@list, step]%></td>
+        <td><%= link_to 'Edit', [@list, step] %></td>
+        <td><%= link_to 'Destroy', [@list, step], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Step', new_step_path %>
+<%= link_to 'New Step', new_list_step_path %>
