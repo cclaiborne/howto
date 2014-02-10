@@ -5,7 +5,7 @@ class StepsController < ApplicationController
   # GET /steps.json
   def index
     @list = List.find(params[:list_id])
-    @steps = @list.steps
+    @steps = @list.steps.all
   end
 
   # GET list/:list_id/steps/new
@@ -18,7 +18,7 @@ class StepsController < ApplicationController
   # GET list/:list_id/steps/new
   def show
     @list = List.find(params[:list_id])
-    @step = @list.steps.new()
+    @step = @list.step.show()
   end
   # GET /steps/1/edit
   def edit
@@ -29,7 +29,7 @@ class StepsController < ApplicationController
   def create
     #@step = Step.new(step_params)
     @list = List.find(params[:list_id])
-    @step = @list.steps.new(step_params)
+    @step = @list.steps.build(step_params)
     respond_to do |format|
       if @step.save
         format.html { redirect_to [@list, @step], notice: 'Step was successfully created.' }
